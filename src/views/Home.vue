@@ -1,151 +1,30 @@
 <template>
 
-  <v-container>
+  <div>
 
-    <v-row>
+    <h4 class="flex text-blue-800  font-bold text-xl ">
 
-      <h1>Welcome to the MuchoShop</h1>
+      <br /><br />To Paradise Electronic Diary Welcomes You!
 
-    </v-row>
+    </h4>
 
-    <v-row>
+    <p class="tab text-blue-800 ">
 
-      <v-col v-for="product in products" :key="product.id" cols="12" md="6" lg="4">
+      <br />We are excited to serve you! <img class="object-contain h-48
 
-        <v-card>
+      object-left-top " src=../assets/img/yhankful/1t.png><br/><br/> Our site is for you
 
-          <v-card-title class="headline">{{ product.name }}</v-card-title>
+      to use on your journey in life. <br />The big goal in our site is to help
 
-          <v-card-subtitle>
+      you track your lifes simple goals and to help motivate you to do better.
 
-            <v-container>
+      <br />The goals you will track are good deeds, what you are grateful for ,
 
-             <v-row>
+      and your reading. <br />
 
-                <p class="title">${{ product.price }}</p>
+       <br /><br />We hope you enjoy your electronic diary!<br /><br /><br /><br /><br /><br />
 
-                <v-spacer />
+    </p>
 
-                <div>
+  </div>
 
-                  <p v-if="product.quantity > 0" class="success--text">{{ product.quantity }} left</p>
-
-                  <p v-else class="error--text">Out of Stock</p>
-
-                </div>
-
-              </v-row>
-
-            </v-container>
-
-          </v-card-subtitle>
-
-          <v-card-text class="mt-n6">{{ product.description }}</v-card-text>
-
-          <v-card-actions>
-
-            <v-btn v-if="user" block color="primary" text :disabled="product.quantity == 0" @click="addToCart(product)">Add to Cart</v-btn>
-
-            <v-btn v-else block color="primary" text :disabled="product.quantity == 0" to="/login">Please Login to Buy</v-btn>
-
-          </v-card-actions>
-
-        </v-card>
-
-      </v-col>
-
-    </v-row>
-
-  </v-container>
-
-</template>
-
-
-
-
-
-
-
-<script>
-
-
-
-import { mapGetters } from 'vuex'
-
-import { db } from '../plugins/firebase'
-
-export default {
-
-  name: 'Home',
-
-  data() {
-
-    return {
-
-      products: [],
-
-      
-
-    }
-
-  },
-
-  computed: {
-
-    ...mapGetters({
-
-      user: 'getUser',
-
-    }),
-
-  },
-
-  mounted() {
-
-    this.bind()
-
-  },
-
-  methods: {
-
-    async bind() {
-
-      await this.$bind('products', db.collection('products').where('showCatalog', '==', true))
-
-    
-
-    },
-
-    async addToCart(product){
-
-      await db
-
-      .collection("cart")
-
-      .doc(this.user.uid)
-
-      .update({
-
-        items: this.$firebase.firestore.FieldValue.arrayUnion({
-
-          id: product.id,
-
-          name: product.name,
-
-          quantity: 1,
-
-          price: product.price,
-
-      
-
-        })
-
-      })
-
-    }
-
-  },
-
-}
-
-</script>

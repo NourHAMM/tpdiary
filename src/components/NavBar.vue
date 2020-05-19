@@ -27,12 +27,13 @@
         </template>
         <v-list>
          <v-list-item>
-           <v-list-item-title>
-              <v-btn block text to="/myorders">My Orders</v-btn>
-            </v-list-item-title>
+           
           </v-list-item>
           
-      
+      <v-list-item-title>
+              <v-btn block text to="/">About Diary</v-btn>
+            </v-list-item-title>
+
             <v-list-item-title>
               <v-btn block text to="/inventory">Diary Log</v-btn>
             </v-list-item-title>

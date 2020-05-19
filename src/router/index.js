@@ -14,7 +14,7 @@ import Login from '../views/Login.vue'
 
 
 
-import MyOrders from '../views/MyOrders.vue'
+
 
 
 
@@ -45,85 +45,21 @@ Vue.use(VueRouter)
 
 
 const routes = [
-
-
-
   { path: '/', name: 'Home', component: Home },
-
-
-
   { path: '/login', name: 'Login', component: Login },
-
-
-
-  { path: '/myorders', name: 'MyOrders', component: MyOrders, meta: { requiresRole: 'user' } },
-
-
-
- 
-
-
-
   { path: '/inventory', name: 'Inventory', component: Inventory, meta: { requiresRole: 'user' } },
-
-
-
 ]
-
-
-
-
-
-
-
 const router = new VueRouter({
-
-
-
   mode: 'history',
-
-
-
   base: process.env.BASE_URL,
-
-
-
   routes,
-
-
-
 })
-
-
-
-
-
-
-
 router.beforeEach((to, from, next) => {
-
-
-
   if (to.matched.some((record) => record.meta.requiresRole)) {
-
-
-
     if (store.getters.getUser.roles && store.getters.getUser.roles[to.meta.requiresRole]) {
-
-
-
       next()
-
-
-
     } else {
-
-
-
-      next('/login')
-
-
-
+     next('/login')
     }
 
 
