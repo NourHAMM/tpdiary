@@ -18,8 +18,6 @@ import MyOrders from '../views/MyOrders.vue'
 
 
 
-import Cart from '../views/Cart.vue'
-
 
 
 import Inventory from '../views/Inventory.vue'
@@ -62,11 +60,11 @@ const routes = [
 
 
 
-  { path: '/cart', name: 'Cart', component: Cart, meta: { requiresRole: 'user' } },
+ 
 
 
 
-  { path: '/inventory', name: 'Inventory', component: Inventory, meta: { requiresRole: 'admin' } },
+  { path: '/inventory', name: 'Inventory', component: Inventory, meta: { requiresRole: 'user' } },
 
 
 
