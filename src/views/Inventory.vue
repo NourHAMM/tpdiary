@@ -14,7 +14,7 @@
 
           <v-card-text>
 
-            <v-form>
+            <v-form >
                       
               <v-text-field v-model="newProduct.name" label="Logs Nature: GoodDeed, Grafteful for & Reading" />
 
@@ -50,27 +50,19 @@
 
       <v-col cols="12">
 
-        <v-data-table :headers="productsHeaders" :items="products" class="elevation-1"></v-data-table>
-
+        <v-data-table :headers="productsHeaders" :items="products" class="elevation-1">
+          
+          
+        </v-data-table>
+        
       </v-col>
 
     </v-row>
-
-   
   </v-container>
-
 </template>
-
-
-
-
-
-
-
 <script>
 
 import { db } from '../plugins/firebase'
-
 export default {
 
   name: 'Inventory',
@@ -88,6 +80,9 @@ export default {
         description: '',
 
         date: 'ex 12-12-20',
+       
+
+           
 
       
 
@@ -100,6 +95,7 @@ export default {
         { text: 'Description', value: 'description' },
 
         { text: 'Date', value: 'date' },
+        { text: 'Remove', value: 'remove' },
 
        
 
@@ -107,7 +103,6 @@ export default {
 
       products: [],
 
-      orders: [],
 
     }
 
@@ -130,7 +125,7 @@ export default {
         description: '',
 
         date: 'ex 12-12-20',
-
+      
        
 
       }
@@ -150,10 +145,16 @@ export default {
     async bind() {
 
       await this.$bind('products', db.collection('products'))
+    },
+     async delete() {
 
-   
+      await db.collection('products').delete(this.products)
+
+      this.clear()
 
     },
+   
+
 
   },
 
