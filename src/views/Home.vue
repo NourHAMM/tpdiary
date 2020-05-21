@@ -20,7 +20,8 @@
 
       <br />The goals you will track are good deeds, what you are grateful for ,
 
-      and your reading. <br />
+      and your reading. <br /> All your logs will be public and seen by everyone.
+      We see that this may help motivate you to do more good.
 
        <br /><br />We hope you enjoy your electronic diary!<br /><br /><br /><br /><br /><br />
 
